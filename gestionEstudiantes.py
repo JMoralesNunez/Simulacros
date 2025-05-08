@@ -52,12 +52,15 @@ while Menu:
                 else:
                     print("Edad inválida")
             while True:
-                grade = input("Ingresa la nota del estudiante: ")
-                if grade.isdigit() and float(grade) >= 0 and float(grade) >= 5:
-                    grade = float(grade)
-                    break
-                else:
-                    print("nota inválida")
+                try:
+                    grade = float(input("Ingresa la nota del estudiante: "))
+                    if grade >= 0.0 and grade <= 5.0:
+                        break
+                    else:
+                        print("Nota inválida")
+                except:
+                    print("Ingrese una nota valida")
+                
             add(iD,fullname,age,grade,students)
             while True:
                 reset = input("¿Quieres añadir otro estudiante? ingresa un número 1.SI/2.NO: ")
@@ -84,12 +87,6 @@ while Menu:
                 else:
                     print("ID inválido")
             Student=search_id(id_search, students)
-            if Student == None:
-                print("Usuario no encontrado")
-            else:
-                print("Tu estudiante es: ")
-                for v in Student.values():
-                    print(v)
         if search_method == "2":
             while True:
                 name2 = input("Ingresa el nombre del estudiante: ")
@@ -106,3 +103,36 @@ while Menu:
             name_search = f"{name2} {lastname2}"
             search_name(name_search, students)
     if option == "3":
+        while True:
+                id_search = input("Ingresa el ID del estudiante al que deseas editar su información: ")
+                if id_search.isdigit() and int(id_search) > 0:
+                    break
+                else:
+                    print("ID inválido")
+        while True:
+            change = input("¿Qué deseas cambiar, su edad o su nota? 1.edad / 2.nota: ")
+            if change.isdigit() and change == "1" or  change == "2":
+                break
+            else:
+                print("Ingresa una opción válida")
+        if change == "1":
+            while True:
+                new_age = input("Ingresa la nueva edad del estudiante: ")
+                if new_age.isdigit() and int(new_age) > 0:
+                    break
+                else:
+                    print("Edad inválida")
+            update_age(id_search,new_age,students)
+        if change == "2":
+            while True:
+                try:
+                    new_grade = float(input("Ingresa la nueva nota del estudiante: "))
+                    if new_grade >= 0.0 and new_grade <= 5.0:
+                        break
+                    else:
+                        print("Nota inválida")
+                except:
+                    print("Ingrese una nota valida")
+            update_grade(id_search,new_grade,students)
+
+
