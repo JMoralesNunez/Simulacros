@@ -105,10 +105,10 @@ while Menu:
     if option == "3":
         while True:
                 id_search = input("Ingresa el ID del estudiante al que deseas editar su información: ")
-                if id_search.isdigit() and int(id_search) > 0:
+                if id_search.isdigit() and int(id_search) > 0 and id_search in students:
                     break
                 else:
-                    print("ID inválido")
+                    print("ID inválido o estudiante no encontrado en la base de datos")
         while True:
             change = input("¿Qué deseas cambiar, su edad o su nota? 1.edad / 2.nota: ")
             if change.isdigit() and change == "1" or  change == "2":
