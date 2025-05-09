@@ -11,14 +11,13 @@ def search_id(id, dict):
         print("Nombre Completo: {fullname}, Edad: {age}, Nota: {grade}".format_map(format))
     
 def search_name(name,dict):
-    for k,v in dict.items():
-        if name == v["fullname"]:
+    for v in dict.values():
+        if name in v["fullname"]:
             print("Estudiante encontrado:")
-            print(f"ID: {k}....... Nombre completo: {v["fullname"]} Edad: {v["age"]} Nota: {v["grade"]}")
-            break
+            print(f"Nombre completo: {v["fullname"]} Edad: {v["age"]} Nota: {v["grade"]}")
+            print("="*50)
         else:
-            print("Estudiante no encontrado")
-            break
+            continue
 
 def update_age(id, age, dict):
     dict[id]["age"]=age
