@@ -30,3 +30,14 @@ def update_grade(id, grade, dict):
     format=dict.get(id)
     print("Cambio realizado exitosamente!")
     print("Nombre Completo: {fullname}, Edad: {age}, Nota: {grade}".format_map(format))
+    
+def delete(id, dict): #Función para eliminar un producto y su información
+    dict.pop(id)
+    print(f"{id} has been successfully deleted")
+
+def average(dict):
+    promedio = []
+    for v in dict.values():
+        promedio.append(v["grade"])
+    promedio = sum(promedio)/len(promedio)
+    return promedio
