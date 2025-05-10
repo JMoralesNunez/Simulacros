@@ -104,11 +104,11 @@ while Menu:
             search_name(name_search, students)
     if option == "3":
         while True:
-                id_search = input("Ingresa el ID del estudiante al que deseas editar su información: ")
-                if id_search.isdigit() and int(id_search) > 0 and id_search in students:
-                    break
-                else:
-                    print("ID inválido o estudiante no encontrado en la base de datos")
+            id_search = input("Ingresa el ID del estudiante al que deseas editar su información: ")
+            if id_search.isdigit() and int(id_search) > 0 and id_search in students:
+                break
+            else:
+                print("ID inválido o estudiante no encontrado en la base de datos")
         while True:
             change = input("¿Qué deseas cambiar, su edad o su nota? 1.edad / 2.nota: ")
             if change.isdigit() and change == "1" or  change == "2":
@@ -134,5 +134,17 @@ while Menu:
                 except:
                     print("Ingrese una nota valida")
             update_grade(id_search,new_grade,students)
-
-
+    if option == "4":
+        for k,v in students.items():
+            print(f"ID: {k}................ Nombre: {v["fullname"]} | Edad: {v["age"]} | Nota: {v["grade"]}")
+            print("="*75)
+        while True:
+            delete_id = input("Ingresa el ID del estudiante que deseas eliminar: ")
+            if delete_id.isdigit() and int(delete_id) > 0 and delete_id in students:
+                break
+            else:
+                print("ID inválido o estudiante no encontrado en la base de datos")
+        delete(delete_id, students)
+    if option == "5":
+        promedio=average(students)
+        print(f"El promedio de los estudiantes es de: {promedio}")
